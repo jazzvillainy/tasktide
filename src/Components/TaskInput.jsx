@@ -3,12 +3,13 @@ import React, { useState } from 'react'
 import TaskDisplay from './TaskDisplay';
 
 export default function TaskInput() {
-    const [ task, setTask ] = useState({name:''});
+    const [ task, setTask ] = useState('');
+    const [ tasks, setTasks ] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(task);
-        setTask({name:''});
+        setTasks([...tasks, task]);
+        setTask('');
     }
 
     return (
@@ -16,8 +17,8 @@ export default function TaskInput() {
             <form onSubmit={handleSubmit}>
                 <input 
                  type='text'
-                 value={task.name}
-                 onChange={(e) => setTask({name:e.target.value})}
+                 value={task}
+                 onChange={(e) => setTask(e.target.value)}
                  placeholder='Enter task'
                 />
                 
@@ -25,7 +26,9 @@ export default function TaskInput() {
                     Add
                 </button>
             </form>
-            <TaskDisplay task={task}/>
+            {tasks.map((item) => (
+                <TaskDisplay item={item} key={item} />
+            ))}
         </div>
     )
 }
