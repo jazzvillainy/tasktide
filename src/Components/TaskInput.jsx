@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 
-import TaskDisplay from './TaskDisplay';
+import TaskList from './TaskList';
 
-export default function TaskInput() {
+export default function TaskInput({ tasks, setTasks }) {
     const [ task, setTask ] = useState('');
-    const [ tasks, setTasks ] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -26,9 +25,7 @@ export default function TaskInput() {
                     Add
                 </button>
             </form>
-            {tasks.map((item) => (
-                <TaskDisplay item={item} key={item} />
-            ))}
+            <TaskList tasks={tasks} setTasks={setTasks}/>
         </div>
     )
 }

@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 
-body{
-    @apply font-poppins;
-}
+/* body{
+  @apply font-poppins;
+} */
