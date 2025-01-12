@@ -6,3 +6,7 @@
 /* body{
   @apply font-poppins;
 } */
+
+.tasks{
+  background-color: aqua;
+}
